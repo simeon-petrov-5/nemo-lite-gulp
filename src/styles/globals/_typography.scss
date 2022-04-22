@@ -16,10 +16,16 @@ $type-size-ratio: map-get($type-ratios, "majorThird");
 
 // ------------
 // Global setup
+html {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, sans-serif, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,
+    sans-serif;
+}
+
 body {
   // Ensure base applied as default for all other elements
   font-size: $type-base-size;
-  //   font-family: "Merriweather Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   line-height: 1.5;
 }
 
@@ -37,6 +43,13 @@ h4 {
   margin-top: 0;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Roboto", sans-serif;
+}
+
 // ------------
 // Generate heading styles - Fluid
 
@@ -50,7 +63,8 @@ $level-size: $type-base-size;
 
   // Output heading styles
   // Assign to element and create utility class
-  h#{$level}, .heading-#{$level} {
+  h#{$level},
+  .heading-#{$level} {
     // Fallback for browsers that don't support min / max
     font-size: $level-size;
 
@@ -59,7 +73,8 @@ $level-size: $type-base-size;
     line-height: calc(2px + 2ex + 2px);
 
     // Set with `em` to be relative to current `font-size`
-    margin-bottom: 0.65em;
+    // * 2 for more `air`
+    margin-bottom: calc(0.65em * 1.5);
 
     // Strip units from a value 14px -> 14
     $level-unitless: math.div($level-size, ($level-size * 0 + 1));

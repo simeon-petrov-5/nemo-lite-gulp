@@ -1,9 +1,230 @@
-@use "./globals/reset";
-@use "./globals/typography";
+@use "./globals";
 @use "./variables";
 @use "./composition";
 @use "./utility";
 
-h1 {
-  color: red;
+@use "alpha-grid/dist/scss/agrid.scss";
+
+body {
+  background-color: var(--clr-light-0);
+  color: var(--clr-dark-3);
+}
+
+a {
+  color: var(--clr-primary-3);
+  transition: color 300ms ease-in-out;
+  &:hover {
+    color: var(--clr-primary-5);
+  }
+}
+
+section h2 {
+  text-align: center;
+}
+
+// ------------
+// Hero
+#hero {
+  position: relative;
+  height: 100vh;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .overlay {
+    background-color: var(--clr-dark-2);
+    opacity: 0.4;
+  }
+
+  h1 {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--clr-text);
+    font-family: "Marck Script";
+  }
+}
+
+// ------------
+// About and Gallery
+.about {
+  .desc {
+    text-align: center;
+    font-size: 1.125rem;
+
+    max-width: 600px;
+    margin-inline: auto;
+    margin-bottom: 3rem;
+  }
+
+  .gallery {
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-rows: 200px;
+    grid-auto-flow: dense;
+
+    .wide {
+      grid-column: span 2;
+    }
+    .tall {
+      grid-row: span 2;
+    }
+    .big {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 560px) {
+  .about .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+// ------------
+// Fresh
+#fresh {
+  position: relative;
+  z-index: 2;
+  .agrid img {
+    border-radius: 6px;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.fresh-wrapper {
+  position: relative;
+  overflow: hidden;
+  .wave {
+    position: absolute;
+    bottom: calc(var(--sct-py) / 2);
+    left: 0px;
+    display: flex;
+    width: 200%;
+    animation: wave 5s cubic-bezier(0.16, 0.54, 0.82, 0.24) infinite;
+
+    svg {
+      background-color: #99D3D8;
+      fill: #00919E;
+    }
+  }
+}
+
+// ------------
+// Contacts
+#contacts {
+  display: grid;
+  grid-template-areas:
+    "title"
+    "links"
+    "hours"
+    "map";
+
+  .title {
+    grid-area: title;
+  }
+
+  .links {
+    grid-area: links;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    a {
+      font-size: 1.125rem;
+    }
+  }
+
+  .working-hours {
+    grid-area: hours;
+    --wh-gap: 12px;
+    padding: 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--wh-gap);
+    margin-bottom: 2rem;
+    li {
+      width: calc(50% - var(--wh-gap));
+      text-align: center;
+      .heading-3 {
+        margin-bottom: 0px;
+      }
+      .day {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .map {
+    grid-area: map;
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  #contacts .working-hours li {
+    width: calc(25% - var(--wh-gap));
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #contacts {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-areas:
+      "hours title"
+      "hours links"
+      "hours map";
+    column-gap: 2rem;
+
+    .working-hours {
+      margin-bottom: 0px;
+      --wh-gap: 12px;
+      border-radius: 12px;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      padding: 1rem 2rem;
+      gap: var(--wh-gap);
+      background-color: var(--clr-primary-2);
+
+      li {
+        width: 100%;
+        &:first-child {
+          margin-bottom: 2rem;
+        }
+      }
+    }
+
+    .map {
+      height: 400px !important;
+    }
+  }
 }

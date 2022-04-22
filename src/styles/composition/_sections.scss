@@ -8,30 +8,41 @@
 
 // ------
 // Section / Container
+
+:root {
+  --sct-px: 0.75rem;
+  --sct-py: 2rem;
+}
+
 .section {
   max-width: var(--sct-mw, 1200px);
-  padding-inline: var(--sct-px, 0.75rem);
+  padding: var(--sct-py, 2rem) var(--sct-px, 0.75rem);
+  margin-inline: auto;
 }
 
 @include breakpoints.media("sm") {
-  .section {
+  :root {
+    --sct-py: 2.25rem;
     --sct-px: 1rem;
   }
 }
 
 @include breakpoints.media("md") {
-  .section {
+  :root {
+    --sct-py: 2.5rem;
     --sct-px: 1.25rem;
   }
 }
 
 @include breakpoints.media("lg") {
-  .section {
+  :root {
+    --sct-py: 3rem;
     --sct-px: 1.5rem;
   }
 }
 @include breakpoints.media("xl") {
-  .section {
+  :root {
+    --sct-py: 4rem;
     --sct-px: 2rem;
   }
 }

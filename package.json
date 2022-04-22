@@ -18,6 +18,7 @@
     "sass": "^1.50.1"
   },
   "dependencies": {
+    "alpha-grid": "^1.4.0",
     "gulp-postcss": "^9.0.1",
     "gulp-terser": "^2.1.0"
   }
