@@ -1,0 +1,20 @@
+@import "open-color/open-color.scss";
+
+:root {
+  // --clr-primary: ;
+  // --clr-primary-1: ;
+  // --clr-primary-2: ;
+  // --clr-primary-3: ;
+
+  --clr-text: $oc-gray-0;
+
+  --clr-light-0: $oc-gray-0;
+  --clr-light-1: $oc-gray-1;
+  --clr-light-2: $oc-gray-2;
+  --clr-light-3: $oc-gray-3;
+
+  --clr-dark-0: $oc-gray-6;
+  --clr-dark-1: $oc-gray-7;
+  --clr-dark-2: $oc-gray-8;
+  --clr-dark-3: $oc-gray-9;
+}

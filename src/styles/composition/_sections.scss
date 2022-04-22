@@ -1,0 +1,37 @@
+@use "../variables/breakpoints";
+
+// ------
+// Flow / Lobotomised Owl
+.lobo-owl > * + * {
+  margin-top: var(--mt, 1em);
+}
+
+// ------
+// Section / Container
+.section {
+  max-width: var(--sct-mw, 1200px);
+  padding-inline: var(--sct-px, 0.75rem);
+}
+
+@include breakpoints.media("sm") {
+  .section {
+    --sct-px: 1rem;
+  }
+}
+
+@include breakpoints.media("md") {
+  .section {
+    --sct-px: 1.25rem;
+  }
+}
+
+@include breakpoints.media("lg") {
+  .section {
+    --sct-px: 1.5rem;
+  }
+}
+@include breakpoints.media("xl") {
+  .section {
+    --sct-px: 2rem;
+  }
+}

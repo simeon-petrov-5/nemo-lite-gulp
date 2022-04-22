@@ -1,0 +1,9 @@
+@use "./globals/reset";
+@use "./globals/typography";
+@use "./variables";
+@use "./composition";
+@use "./utility";
+
+h1 {
+  color: red;
+}

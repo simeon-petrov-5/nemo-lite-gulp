@@ -1,0 +1,76 @@
+// Source https://moderncss.dev/generating-font-size-css-rules-and-creating-a-fluid-type-scale/
+@use "sass:math";
+$type-ratios: (
+  "minorSecond": 1.067,
+  "majorSecond": 1.125,
+  "minorThird": 1.2,
+  "majorThird": 1.25,
+  "perfectFourth": 1.333,
+  "augmentedFourth": 1.414,
+  "perfectFifth": 1.5,
+  "goldenRatio": 1.618,
+);
+
+$type-base-size: 1rem;
+$type-size-ratio: map-get($type-ratios, "majorThird");
+
+// ------------
+// Global setup
+body {
+  // Ensure base applied as default for all other elements
+  font-size: $type-base-size;
+  //   font-family: "Merriweather Sans", sans-serif;
+  line-height: 1.5;
+}
+
+p,
+li,
+h1,
+h2,
+h3,
+h4 {
+  // Help prevent overflow of long words/names/URLs
+  word-break: break-word;
+  // Optional, not supported for all languages:
+  hyphens: auto;
+  // Clear top margin
+  margin-top: 0;
+}
+
+// ------------
+// Generate heading styles - Fluid
+
+// List in descending order to prevent extra sort function
+// Limited to high-touch heading styles
+$type-levels: 4, 3, 2, 1;
+
+$level-size: $type-base-size;
+@each $level in $type-levels {
+  $level-size: $level-size * $type-size-ratio;
+
+  // Output heading styles
+  // Assign to element and create utility class
+  h#{$level}, .heading-#{$level} {
+    // Fallback for browsers that don't support min / max
+    font-size: $level-size;
+
+    // Recommendation courtesy of this brilliant work:
+    // @link https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/
+    line-height: calc(2px + 2ex + 2px);
+
+    // Set with `em` to be relative to current `font-size`
+    margin-bottom: 0.65em;
+
+    // Strip units from a value 14px -> 14
+    $level-unitless: math.div($level-size, ($level-size * 0 + 1));
+
+    // Fluid type styles
+    $fluid-reduction: if($level-size > 4, 0.5, 0.33);
+    $fluid-min: $level-unitless - ($fluid-reduction * $level-unitless);
+
+    $fluid-min: if($fluid-min > $type-base-size, $fluid-min, 1);
+    $fluid-scaler: ($level-unitless - $fluid-min) + 4vw;
+
+    font-size: clamp(#{$fluid-min}rem, #{$fluid-scaler} + 1rem, #{$level-size});
+  }
+}
