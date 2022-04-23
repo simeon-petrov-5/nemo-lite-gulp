@@ -183,6 +183,12 @@ h1,
   --clr-primary-4: #d45f0a;
   --clr-primary-5: #bc5409;
   --clr-primary-6: #a54a08;
+  --clr-secondary-0: #99d3d8;
+  --clr-secondary-1: #66bdc5;
+  --clr-secondary-2: #33a7b1;
+  --clr-secondary-3: #00919e;
+  --clr-secondary-4: #00919e;
+  --clr-secondary-5: #00919e;
   --clr-text: #f8f9fa;
   --clr-light-0: #f8f9fa;
   --clr-light-1: #f1f3f5;
@@ -1100,7 +1106,7 @@ section h2 {
 }
 .about .gallery {
   display: grid;
-  grid-gap: 2px;
+  grid-gap: 4px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-auto-rows: 200px;
   grid-auto-flow: dense;
@@ -1132,14 +1138,6 @@ section h2 {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
-#fresh {
-  position: relative;
-  z-index: 2;
-}
-#fresh .agrid img {
-  border-radius: 6px;
-}
-
 @keyframes wave {
   0% {
     transform: translateX(0);
@@ -1148,23 +1146,42 @@ section h2 {
     transform: translateX(-50%);
   }
 }
-.fresh-wrapper {
+#fresh {
   position: relative;
   overflow: hidden;
+  background-color: var(--clr-secondary-0);
+  padding-block: var(--sct-py);
 }
-.fresh-wrapper .wave {
+#fresh .gallery {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(50px, 1fr));
+  gap: 4px;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--sct-px);
+}
+#fresh .gallery img {
+  border-radius: 6px;
+}
+#fresh .wave {
   position: absolute;
-  bottom: calc(var(--sct-py) / 2);
+  bottom: 0px;
   left: 0px;
   display: flex;
   width: 200%;
   animation: wave 5s cubic-bezier(0.16, 0.54, 0.82, 0.24) infinite;
 }
-.fresh-wrapper .wave svg {
-  background-color: #99D3D8;
-  fill: #00919E;
+#fresh .wave svg {
+  fill: var(--clr-secondary-3);
 }
 
+@media screen and (min-width: 640px) {
+  #fresh .gallery {
+    grid-template-columns: repeat(4, minmax(50px, 1fr));
+  }
+}
 #contacts {
   display: grid;
   grid-template-areas: "title" "links" "hours" "map";
