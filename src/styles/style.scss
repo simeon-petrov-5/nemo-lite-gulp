@@ -3,8 +3,6 @@
 @use "./composition";
 @use "./utility";
 
-@use "alpha-grid/dist/scss/agrid.scss";
-
 body {
   background-color: var(--clr-light-0);
   color: var(--clr-dark-3);
@@ -52,7 +50,9 @@ section h2 {
 
 // ------------
 // About and Gallery
-.about {
+#about {
+  position: relative;
+  z-index: 2;
   .desc {
     text-align: center;
     font-size: 1.125rem;
@@ -84,7 +84,7 @@ section h2 {
       display: flex;
       justify-content: center;
       align-items: center;
-      img {
+      img, a {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -95,7 +95,7 @@ section h2 {
 }
 
 @media screen and (min-width: 560px) {
-  .about .gallery {
+  #about .gallery {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
@@ -138,11 +138,9 @@ section h2 {
     left: 0px;
     display: flex;
     width: 200%;
-    // height: 100%;
     animation: wave 5s cubic-bezier(0.16, 0.54, 0.82, 0.24) infinite;
 
     svg {
-      // background-color: #99d3d8;
       fill: var(--clr-secondary-3);
     }
   }

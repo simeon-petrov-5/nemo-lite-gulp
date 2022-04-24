@@ -1,10 +1,5 @@
-// FlexMasonry.init('.gallery', {
-//     responsive: true,
-//     breakpointCols: {
-//         'min-width: 1200px': 6,
-//         'min-width: 992px': 5,
-//         'min-width: 768px': 4,
-//         'min-width: 576px': 3,
-//         'min-width: 320px': 2,
-//     },
-// });
+AOS.init({
+    duration: 1000,
+    offset: 150,
+    once: true,
+});
