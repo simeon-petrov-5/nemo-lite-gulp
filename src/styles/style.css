@@ -290,6 +290,11 @@ section h2 {
 #hero {
   position: relative;
   height: 100vh;
+  overflow: hidden;
+  background-image: url("../assets/imgs/hero-background-min.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #hero img {
   object-fit: cover;
@@ -297,8 +302,8 @@ section h2 {
   height: 100%;
 }
 #hero .overlay {
-  background-color: var(--clr-dark-2);
-  opacity: 0.4;
+  background-color: var(--clr-dark-3);
+  opacity: 0.5;
 }
 #hero h1 {
   position: absolute;
@@ -343,7 +348,8 @@ section h2 {
   justify-content: center;
   align-items: center;
 }
-#about .gallery li img, #about .gallery li a {
+#about .gallery li img,
+#about .gallery li a {
   width: 100%;
   height: 100%;
   object-fit: cover;
