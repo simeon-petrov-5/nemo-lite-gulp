@@ -140,6 +140,7 @@ h2,
 h3,
 h4 {
   font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
 }
 
 h4,
@@ -206,36 +207,36 @@ h1,
 
 :root {
   --sct-px: 0.75rem;
-  --sct-py: 2rem;
+  --sct-py: 3rem;
 }
 
 .section {
   max-width: var(--sct-mw, 1200px);
-  padding: var(--sct-py, 2rem) var(--sct-px, 0.75rem);
+  padding: var(--sct-py) var(--sct-px);
   margin-inline: auto;
 }
 
 @media (min-width: 640px) {
   :root {
-    --sct-py: 2.25rem;
+    --sct-py: 3.25rem;
     --sct-px: 1rem;
   }
 }
 @media (min-width: 768px) {
   :root {
-    --sct-py: 2.5rem;
+    --sct-py: 3.75rem;
     --sct-px: 1.25rem;
   }
 }
 @media (min-width: 1024px) {
   :root {
-    --sct-py: 3rem;
+    --sct-py: 4rem;
     --sct-px: 1.5rem;
   }
 }
 @media (min-width: 1280px) {
   :root {
-    --sct-py: 4rem;
+    --sct-py: 4.5rem;
     --sct-px: 2rem;
   }
 }
@@ -313,18 +314,22 @@ section h2 {
   text-align: center;
   color: var(--clr-text);
   font-family: "Marck Script";
+  text-transform: unset;
 }
 
 #about {
   position: relative;
   z-index: 2;
 }
+#about h2 {
+  margin-bottom: 2rem;
+}
 #about .desc {
   text-align: center;
   font-size: 1.125rem;
   max-width: 600px;
   margin-inline: auto;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 #about .gallery {
   display: grid;
@@ -347,13 +352,21 @@ section h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 6px;
+  overflow: hidden;
 }
 #about .gallery li img,
 #about .gallery li a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 6px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+#about .gallery li img {
+  transition: transform 300ms ease-in-out;
+}
+#about .gallery li img:hover {
+  transform: scale(1.1);
 }
 
 @media screen and (min-width: 560px) {
@@ -375,6 +388,9 @@ section h2 {
   background-color: var(--clr-secondary-0);
   padding-block: var(--sct-py);
 }
+#fresh h2 {
+  margin-bottom: 3rem;
+}
 #fresh .gallery {
   position: relative;
   z-index: 2;
@@ -385,8 +401,17 @@ section h2 {
   margin-inline: auto;
   padding-inline: var(--sct-px);
 }
-#fresh .gallery img {
+#fresh .gallery li {
   border-radius: 6px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+#fresh .gallery li img {
+  transition: transform 300ms ease-in-out;
+}
+#fresh .gallery li img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 #fresh .wave {
   position: absolute;
@@ -411,11 +436,12 @@ section h2 {
 }
 #contacts .title {
   grid-area: title;
+  margin-bottom: 3rem;
 }
 #contacts .links {
   grid-area: links;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 #contacts .links a {
   font-size: 1.125rem;
@@ -428,7 +454,7 @@ section h2 {
   flex-wrap: wrap;
   align-items: center;
   gap: var(--wh-gap);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 #contacts .working-hours li {
   width: calc(50% - var(--wh-gap));
@@ -443,14 +469,15 @@ section h2 {
 #contacts .map {
   grid-area: map;
   width: 100% !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (min-width: 640px) {
+@media (min-width: 640px) {
   #contacts .working-hours li {
     width: calc(25% - var(--wh-gap));
   }
 }
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   #contacts {
     display: grid;
     grid-template-columns: 250px 1fr;
@@ -465,7 +492,8 @@ section h2 {
     flex-wrap: nowrap;
     padding: 1rem 2rem;
     gap: var(--wh-gap);
-    background-color: var(--clr-primary-2);
+    background-color: var(--clr-light-1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
   }
   #contacts .working-hours li {
     width: 100%;

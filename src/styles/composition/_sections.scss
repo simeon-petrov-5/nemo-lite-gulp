@@ -11,38 +11,38 @@
 
 :root {
   --sct-px: 0.75rem;
-  --sct-py: 2rem;
+  --sct-py: 3rem;
 }
 
 .section {
   max-width: var(--sct-mw, 1200px);
-  padding: var(--sct-py, 2rem) var(--sct-px, 0.75rem);
+  padding: var(--sct-py) var(--sct-px);
   margin-inline: auto;
 }
 
 @include breakpoints.media("sm") {
   :root {
-    --sct-py: 2.25rem;
+    --sct-py: 3.25rem;
     --sct-px: 1rem;
   }
 }
 
 @include breakpoints.media("md") {
   :root {
-    --sct-py: 2.5rem;
+    --sct-py: 3.75rem;
     --sct-px: 1.25rem;
   }
 }
 
 @include breakpoints.media("lg") {
   :root {
-    --sct-py: 3rem;
+    --sct-py: 4rem;
     --sct-px: 1.5rem;
   }
 }
 @include breakpoints.media("xl") {
   :root {
-    --sct-py: 4rem;
+    --sct-py: 4.5rem;
     --sct-px: 2rem;
   }
 }

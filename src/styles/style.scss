@@ -51,6 +51,7 @@ section h2 {
     text-align: center;
     color: var(--clr-text);
     font-family: "Marck Script";
+    text-transform: unset;
   }
 }
 
@@ -59,13 +60,17 @@ section h2 {
 #about {
   position: relative;
   z-index: 2;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
   .desc {
     text-align: center;
     font-size: 1.125rem;
 
     max-width: 600px;
     margin-inline: auto;
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
   }
 
   .gallery {
@@ -90,12 +95,21 @@ section h2 {
       display: flex;
       justify-content: center;
       align-items: center;
+      border-radius: 6px;
+      overflow: hidden;
+
       img,
       a {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 6px;
+        box-shadow: variables.$shadow;
+      }
+      img {
+        transition: transform 300ms ease-in-out;
+        &:hover {
+          transform: scale(1.1);
+        }
       }
     }
   }
@@ -125,6 +139,10 @@ section h2 {
   background-color: var(--clr-secondary-0);
   padding-block: var(--sct-py);
 
+  h2 {
+    margin-bottom: 3rem;
+  }
+
   .gallery {
     position: relative;
     z-index: 2;
@@ -134,8 +152,17 @@ section h2 {
     max-width: 1200px;
     margin-inline: auto;
     padding-inline: var(--sct-px);
-    img {
+    li {
       border-radius: 6px;
+      box-shadow: variables.$shadow;
+      overflow: hidden;
+      img {
+        transition: transform 300ms ease-in-out;
+        &:hover {
+          transform: scale(1.1);
+          box-shadow: variables.$shadow-lg;
+        }
+      }
     }
   }
 
@@ -171,12 +198,13 @@ section h2 {
 
   .title {
     grid-area: title;
+    margin-bottom: 3rem;
   }
 
   .links {
     grid-area: links;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 
     a {
       font-size: 1.125rem;
@@ -191,7 +219,8 @@ section h2 {
     flex-wrap: wrap;
     align-items: center;
     gap: var(--wh-gap);
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+
     li {
       width: calc(50% - var(--wh-gap));
       text-align: center;
@@ -207,16 +236,17 @@ section h2 {
   .map {
     grid-area: map;
     width: 100% !important;
+    box-shadow: variables.$shadow;
   }
 }
 
-@media screen and (min-width: 640px) {
+@include variables.media("sm") {
   #contacts .working-hours li {
     width: calc(25% - var(--wh-gap));
   }
 }
 
-@media screen and (min-width: 768px) {
+@include variables.media("md") {
   #contacts {
     display: grid;
     grid-template-columns: 250px 1fr;
@@ -234,7 +264,8 @@ section h2 {
       flex-wrap: nowrap;
       padding: 1rem 2rem;
       gap: var(--wh-gap);
-      background-color: var(--clr-primary-2);
+      background-color: var(--clr-light-1);
+      box-shadow: variables.$shadow-md;
 
       li {
         width: 100%;
